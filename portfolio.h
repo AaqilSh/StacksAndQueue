@@ -10,11 +10,11 @@ private:
     std::vector<Stock> stocks;
 
 public:
-    void addStock(const std::string& name, int shares, double price);
-    void sellStockFIFO(const std::string& name, int shares_to_sell);
-    void sellStockLIFO(const std::string& name, int shares_to_sell);
+    void buyStock(const std::string& name, int shares, double price);
+    void sellEarlyStock(const std::string& name, int shares_to_sell);
+    void sellRecentStock(const std::string& name, int shares_to_sell);
     void displayStockDetails(const std::string& name) const;
-    void displayAllHoldings() const;
+    void displayPortfolio() const;
     void processStockPerformance(const std::string& name, double change);
     void loadTestData();
 };

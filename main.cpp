@@ -5,49 +5,41 @@ using namespace std;
 
 int main() {
     Portfolio portfolio;
-    int option;
+    int choice;
 
-    do {
-        cout << "\n--- Stock Portfolio Menu ---\n";
-        cout << "1. Enter Stock Performance\n";
+    while (true) {
+        cout << "\nMenu:\n";
+        cout << "1. Enter stock performance\n";
         cout << "2. Find Stock\n";
-        cout << "3. Set Up Test Data\n";
-        cout << "4. Show Stock Portfolio\n";
-        cout << "0. Exit\n";
-        cout << "Enter option: ";
-        cin >> option;
+        cout << "3. Set up Test Data\n";
+        cout << "4. Show stock portfolio\n";
+        cout << "5. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
 
-        switch (option) {
-            case 1: {
-                string name;
-                double change;
-                cout << "Enter stock name: ";
-                cin >> name;
-                cout << "Enter percentage change: ";
-                cin >> change;
-                portfolio.handlePerformance(name, change);
-                break;
-            }
-            case 2: {
-                string name;
-                cout << "Enter stock name to find: ";
-                cin >> name;
-                portfolio.findStock(name);
-                break;
-            }
-            case 3:
-                portfolio.setupTestData();
-                break;
-            case 4:
-                portfolio.showPortfolio();
-                break;
-            case 0:
-                cout << "Exiting.\n";
-                break;
-            default:
-                cout << "Invalid choice.\n";
+        if (choice == 1) {
+            string name;
+            double percent;
+            cout << "Enter stock name: ";
+            cin >> name;
+            cout << "Enter percentage change: ";
+            cin >> percent;
+            portfolio.processStockPerformance(name, percent);
+        } else if (choice == 2) {
+            string name;
+            cout << "Enter stock name: ";
+            cin >> name;
+            portfolio.displayStockDetails(name);
+        } else if (choice == 3) {
+            portfolio.loadTestData();
+        } else if (choice == 4) {
+            portfolio.displayPortfolio();
+        } else if (choice == 5) {
+            break;
+        } else {
+            cout << "Invalid option. Please Try again.\n";
         }
-    } while (option != 0);
+    }
 
     return 0;
 }
